@@ -1,4 +1,5 @@
 import express, { Application, json, urlencoded } from "express";
+import cors  from "cors";
 import BackendRoute from "./route/BackendRoute"
 
 class Server {
@@ -7,7 +8,7 @@ class Server {
     private backendRoute: BackendRoute;
 
     constructor() {
-        this.backend = express();
+        this.backend = express();        
         this.backendRoute = new BackendRoute();
         this.config();
         this.route();
@@ -17,7 +18,8 @@ class Server {
     public config = (): void => {
         this.backend.set('port', 1802);
         this.backend.use(urlencoded({extended: true}));
-        this.backend.use(json());  
+        this.backend.use(json());
+        this.backend.use(cors());
     }
 
     public route = (): void => {

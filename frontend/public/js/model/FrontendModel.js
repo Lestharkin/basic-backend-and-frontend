@@ -14,8 +14,8 @@ export class FrontendModel {
             const data = yield response.json();
             fn(data);
         });
-        this.url = 'https://swapi.dev/api/';
-        //this.url = 'http://172.18.139.97s:1802/api/';
+        //this.url = 'https://swapi.dev/api/';
+        this.url = 'http://localhost:1802/api/';
     }
     getPeopleByID(id, fn) {
         this.http(`${this.url}people/${id}`, 'get', fn);

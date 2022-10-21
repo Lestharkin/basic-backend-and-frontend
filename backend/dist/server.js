@@ -27,6 +27,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importStar(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const BackendRoute_1 = __importDefault(require("./route/BackendRoute"));
 class Server {
     constructor() {
@@ -34,6 +35,7 @@ class Server {
             this.backend.set('port', 1802);
             this.backend.use((0, express_1.urlencoded)({ extended: true }));
             this.backend.use((0, express_1.json)());
+            this.backend.use((0, cors_1.default)());
         };
         this.route = () => {
             this.backend.use('/api', this.backendRoute.router);
